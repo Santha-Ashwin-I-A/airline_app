@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Color</title>
+    <style>
+        {% set color = color | default('black') %}
+        .rec{
+            width:200px;
+            height: 100px;
+            background-color: {{color}};
+            display:flex;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="rec">{{color}}</div>
+</body>
+</html>
