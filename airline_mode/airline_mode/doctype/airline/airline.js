@@ -6,3 +6,12 @@
 
 // 	},
 // });
+
+frappe.ui.form.on('Airline', {
+       refresh(frm) {
+         const your_link = frm.doc.route;
+         frm.add_web_link(your_link, "View Airline website");
+       }
+     });
+
+     

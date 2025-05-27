@@ -16,5 +16,17 @@ class AirplaneTicket(Document):
 		for i in self.table_asdg:
 			total+= i.amount
 		self.total_amount = self.flight_price + total
-		# if self.status != "Boarded":
-		# 	frappe.throw("You only submit the Airplane Ticket if the status is Boarded")
+	def before_save(self):
+		a = frappe.db.get_list("Airplane",fields=["name","capacity"])
+		b = frappe.db.get_list("Airplane Flight",fields=["name","airplane"],filters={"name":f"{self.flight}"})
+		c=[]
+		for i in b:
+			for j in a:
+				if i.airplane == j.name:
+					c.append(j)
+		for i in c:
+			d= i.capacity
+		if d >= len(b):
+				pass
+		else:
+			frappe.throw("Maxium Tickets Applied for this Flight")
